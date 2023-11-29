@@ -1,0 +1,38 @@
+# CLion specific and IDE specific files
+.idea/
+*.iml
+
+# CMake generated files
+cmake-build-*/
+
+# Build output
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+*.dSYM/
+*.su
+*.idb
+*.pdb
+Debug/
+Release/
+bin/
+obj/
+libs/
+
+# Dependency directories (uncomment if you decide to include binaries in your repo)
+# lib/taglib/
+# lib/AudioFile/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Editor specific files
+*~
+*.swp
+
+# Include personal ignore files
+.gitignore.local
