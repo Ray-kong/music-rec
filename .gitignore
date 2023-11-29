@@ -3,6 +3,8 @@
 *.iml
 
 # CMake generated files
+cmake-build-debug/
+cmake-build-release/
 cmake-build-*/
 
 # Build output
@@ -22,17 +24,6 @@ bin/
 obj/
 libs/
 
-# Dependency directories (uncomment if you decide to include binaries in your repo)
-# lib/taglib/
-# lib/AudioFile/
-
 # OS specific files
 .DS_Store
 Thumbs.db
-
-# Editor specific files
-*~
-*.swp
-
-# Include personal ignore files
-.gitignore.local
