@@ -10,8 +10,6 @@
 #include <string>
 #include <filesystem>
 #include "Song.h"
-#include "Gist.h"
-#include "AudioFile.h"
 
 class MusicLibraryProcessor {
 public:

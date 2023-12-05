@@ -1,6 +1,10 @@
 #include <iostream>
 #include "lib/include/ApplicationController.h"
 
+#include "Gist.h"
+#include "AudioFile.h"
+#include "fileref.h"
+
 int main(int argc, char* argv[]) {
     std::string inputDirectoryPath;
 
