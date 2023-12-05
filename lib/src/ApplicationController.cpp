@@ -6,7 +6,6 @@
 #include "../include/MusicLibraryProcessor.h"
 #include <filesystem>
 #include <iostream>
-#include "AudioFile.h"
 namespace fs = std::filesystem;
 
 bool ApplicationController::setUp(std::string inputDirectoryPath) {
