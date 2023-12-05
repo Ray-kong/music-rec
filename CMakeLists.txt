@@ -28,6 +28,11 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(AudioFile Gist)
 
+# Include the Gist src directory
+include_directories(${gist_SOURCE_DIR}/src)
+
+
+
 add_executable(music_rec main.cpp
         lib/include/Song.h
         lib/src/ApplicationController.cpp
@@ -45,7 +50,7 @@ add_executable(music_rec main.cpp
 
 # Link the fetched dependencies with the target
 #TODO: add taglib
-target_link_libraries(music_rec PRIVATE  AudioFile Gist)
+target_link_libraries(music_rec PRIVATE  AudioFile)
 
 # Set the C++ standard
 set_target_properties(music_rec PROPERTIES CXX_STANDARD 17)
