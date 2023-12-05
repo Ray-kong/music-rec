@@ -5,21 +5,25 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Include FetchContent
 include(FetchContent)
+set(ignore_tests echo "" > tests/CMakeLists.txt)
 
 # Fetch and make available the required dependencies
 FetchContent_Declare(
         taglib
         GIT_REPOSITORY https://github.com/taglib/taglib.git
+        PATCH_COMMAND ${ignore_tests}
 )
 
 FetchContent_Declare(
         AudioFile
         GIT_REPOSITORY https://github.com/adamstark/AudioFile.git
+        PATCH_COMMAND ${ignore_tests}
 )
 
 FetchContent_Declare(
         Gist
         GIT_REPOSITORY https://github.com/adamstark/Gist.git
+        PATCH_COMMAND ${ignore_tests}
 )
 
 FetchContent_MakeAvailable(AudioFile Gist)
