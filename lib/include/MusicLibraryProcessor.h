@@ -12,17 +12,16 @@
 #include "Song.h"
 
 class MusicLibraryProcessor {
-private:
-    std::string musicLibraryPath;
-    std::vector<Song> songs;
-
 public:
     MusicLibraryProcessor(const std::string& path);
     void traverseMusicLibrary();
     const std::vector<Song>& getSongs() const;
 
 private:
-    bool isMusicFile(const std::string& filePath);
+    std::string musicLibraryPath;
+    std::vector<Song> songs;
+
+    bool isMusicFile(const std::string& extension);
     Song extractMetadata(const std::string& filePath);
 };
 

@@ -10,11 +10,11 @@
 
 class ApplicationController {
 public:
-    std::vector<Song> songs;
     bool setUp(std::string inputDirectoryPath);
     void run();
 
 private:
+    std::vector<Song> songs;
 
 };
 

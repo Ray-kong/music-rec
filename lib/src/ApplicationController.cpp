@@ -21,5 +21,5 @@ bool ApplicationController::setUp(std::string inputDirectoryPath) {
 
 
 void ApplicationController::run() {
-
+    std::cout << this->songs.size() << std::endl;
 }

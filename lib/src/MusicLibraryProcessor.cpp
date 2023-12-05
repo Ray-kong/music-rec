@@ -9,7 +9,7 @@ MusicLibraryProcessor::MusicLibraryProcessor(const std::string& path)
 
 void MusicLibraryProcessor::traverseMusicLibrary() {
     for (const auto& entry : std::filesystem::recursive_directory_iterator(musicLibraryPath)) {
-        if (!entry.is_directory() && isMusicFile(entry.path().string())) {
+        if (!entry.is_directory() && isMusicFile(entry.path().extension().string())) {
             Song song = extractMetadata(entry.path().string());
             songs.push_back(song);
         }
@@ -20,13 +20,10 @@ const std::vector<Song>& MusicLibraryProcessor::getSongs() const {
     return songs;
 }
 
-bool MusicLibraryProcessor::isMusicFile(const std::string& filePath) {
-    size_t pos = filePath.find_last_of(".");
-    std::string ext = filePath.substr(pos + 1);
-    return ext == "wav" || ext == "mp3"; // Add more extensions as necessary
+bool MusicLibraryProcessor::isMusicFile(const std::string& extension) {
+    return extension == ".wav" || extension == ".mp3"; //TODO: Add more extensions as necessary
 }
 
 Song MusicLibraryProcessor::extractMetadata(const std::string& filePath) {
-
-    return Song("Dummy Title", "Dummy Artist", "Dummy Album", "Dummy Genre");
+    return {"Dummy Title", "Dummy Artist", "Dummy Album", "Dummy Genre"};
 }
