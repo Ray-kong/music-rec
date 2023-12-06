@@ -15,11 +15,20 @@ SpotifyClient::SpotifyClient(std::string clientID, std::string clientSecret)
     requestAuthorization();
 }
 
+void SpotifyClient::setAuthentication(std::string clientID, std::string clientSecret) {
+    this->clientID = clientID;
+    this->clientSecret = clientSecret;
+    requestAuthorization();
+}
+
 void SpotifyClient::requestAuthorization() {
     auto res = cpr::Post(cpr::Url{"https://accounts.spotify.com/api/token"},
                          cpr::Payload{{"grant_type", "client_credentials"},
                                       {"client_id", clientID},
                                       {"client_secret", clientSecret}});
+    std::cout << clientID << std::endl;
+    std::cout << clientSecret << std::endl;
+    std::cout << res.text << std::endl;
     glz::json_t data;
     glz::read_json(data, res.text);
     accessToken = data["access_token"].get<std::string>();
@@ -33,6 +42,9 @@ Artist SpotifyClient::getArtist(const std::string &name) {
 
 Track SpotifyClient::getTrack(const std::string &trackName, const std::string& artistName) {
     auto res = api.SearchTracks("track:" + trackName + " artist:" + artistName);
+    if (res.GetTotal() < 1) {
+        throw std::runtime_error("didn't get any results from getTrack");
+    }
     return res.GetItems()[0];
 }
 

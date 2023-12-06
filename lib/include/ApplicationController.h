@@ -6,16 +6,17 @@
 #define MUSIC_REC_APPLICATIONCONTROLLER_H
 #include "string"
 #include "Song.h"
+#include "SpotifyClient.h"
 #include <vector>
 
 class ApplicationController {
 public:
-    bool setUp(std::string inputDirectoryPath);
+    bool setUp(std::string inputDirectoryPath, std::string clientID, std::string clientSecret);
     void run();
 
 private:
     std::vector<Song> songs;
-
+    SpotifyClient spotify;
 };
 
 

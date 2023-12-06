@@ -12,7 +12,9 @@
 class SpotifyClient {
 public:
     SpotifyClient(std::string clientID, std::string clientSecret);
+    SpotifyClient() = default;
 
+    void setAuthentication(std::string clientID, std::string clientSecret);
     Artist getArtist(const std::string& name);
     Track getTrack(const std::string& trackName, const std::string& artistName);
     // get many
@@ -22,8 +24,8 @@ public:
 
 private:
     // storage for tokens and ids
-    const std::string clientID;
-    const std::string clientSecret;
+    std::string clientID;
+    std::string clientSecret;
     std::string accessToken;
     // spotify library client
     SpotifyAPI api;

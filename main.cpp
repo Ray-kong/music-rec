@@ -8,16 +8,27 @@
 
 int main(int argc, char* argv[]) {
     std::string inputDirectoryPath;
+    std::string clientID, clientSecret;
 
-    if(argc == 2) {
+    if(argc >= 2) {
         inputDirectoryPath = argv[1];
     } else {
         std::cout << "Please enter the path to the directory containing the input files: ";
         std::cin >> inputDirectoryPath;
     }
 
+    if (argc >= 4) {
+        clientID = argv[2];
+        clientSecret = argv[3];
+    } else {
+        std::cout << "Please enter the spotify client ID: ";
+        std::cin >> clientID;
+        std::cout << "Please enter the spotify client secret: ";
+        std::cin >> clientSecret;
+    }
+
     ApplicationController controller;
-    if(controller.setUp(inputDirectoryPath)) {
+    if(controller.setUp(inputDirectoryPath, clientID, clientSecret)) {
         controller.run();
     }
 

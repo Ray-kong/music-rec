@@ -8,7 +8,9 @@
 #include <iostream>
 namespace fs = std::filesystem;
 
-bool ApplicationController::setUp(std::string inputDirectoryPath) {
+bool ApplicationController::setUp(std::string inputDirectoryPath, std::string clientID, std::string clientSecret) {
+    spotify.setAuthentication(clientID, clientSecret);
+
     std::cout << "checking if path is dir..." << std::endl;
     if (fs::exists(inputDirectoryPath) && fs::is_directory(inputDirectoryPath)) {
         std::cout << "path is dir" << std::endl;
@@ -25,6 +27,7 @@ bool ApplicationController::setUp(std::string inputDirectoryPath) {
 
 void ApplicationController::run() {
     std::cout << "Working with "<< this->songs.size() << " songs" << std::endl;
+    std::vector<std::shared_ptr<Track>> res;
     for (const auto& song : songs) {
         std::cout << "======================="<< std::endl;
         std::cout << "fileName: " << song.fileName << std::endl;
@@ -35,5 +38,13 @@ void ApplicationController::run() {
         std::cout << "year: " << song.year << std::endl;
         std::cout << "duration: " << song.duration << std::endl;
         std::cout << "trackNumber: " << song.trackNumber << std::endl;
+
+        auto rec = spotify.getRecommendations({}, {spotify.getTrack(song.title, song.artist).GetId()}, 1);
+        res.push_back(rec[0]);
     }
+    Track finalResult = spotify.getRecommendation(res);
+
+    std::cout << finalResult.GetName() << std::endl;
+    std::cout << finalResult.GetArtists()[0]->GetName() << std::endl;
+    std::cout << finalResult.GetAlbum()->GetName() << std::endl;
 }
