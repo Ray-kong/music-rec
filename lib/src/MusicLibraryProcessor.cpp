@@ -37,6 +37,7 @@ Song MusicLibraryProcessor::extractMetadata(const std::string& filePath) {
     song.fileName = filePathObj.filename().string();
     // Create an input file stream in binary mode to read from the file at filePath
     std::ifstream file(filePath, std::ios::binary);
+
     if (!file.is_open()) {
         std::cerr << "Failed to open file\n";
         return song;
