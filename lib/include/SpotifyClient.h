@@ -14,8 +14,11 @@ public:
     SpotifyClient(std::string clientID, std::string clientSecret);
 
     Artist getArtist(const std::string& name);
-    Track getTrack(const std::string& trackName);
-    std::vector<std::shared_ptr<Track>> getRecommendations(std::vector<std::string> artists, std::vector<std::string> tracks);
+    Track getTrack(const std::string& trackName, const std::string& artistName);
+    // get many
+    std::vector<std::shared_ptr<Track>> getRecommendations(std::vector<std::string> artistIDs, std::vector<std::string> trackIDs, int count = 20);
+    // reduce a list of tracks down to a single recommendation
+    Track getRecommendation(const std::vector<std::shared_ptr<Track>>& tracks);
 
 private:
     // storage for tokens and ids
@@ -25,6 +28,7 @@ private:
     // spotify library client
     SpotifyAPI api;
 
+    // execute oauth flow
     void requestAuthorization();
 };
 

@@ -29,8 +29,18 @@ int main(int argc, char* argv[]) {
 //    std::string clientID, clientSecret;
 //    secretsFile >> clientID >> clientSecret;
 //    SpotifyClient thing{clientID, clientSecret};
-//    auto res = thing.getRecommendations({"taylor swift"}, {"bad blood"});
+//    auto res = thing.getRecommendations({thing.getArtist("taylor swift").GetId()},
+//                                        {thing.getTrack("bad blood", "taylor swift").GetId()});
 //    for (const auto& part : res) {
 //        std::cout << part->GetName() << std::endl;
+//        std::cout << part->GetAlbum()->GetName() << std::endl;
+//        std::cout << part->GetArtists()[0]->GetName() << std::endl;
+//        std::cout << std::endl;
 //    }
+//
+//    auto weaker = thing.getRecommendation(res);
+//
+//    std::cout << weaker.GetName() << std::endl;
+//    std::cout << weaker.GetAlbum()->GetName() << std::endl;
+//    std::cout << weaker.GetArtists()[0]->GetName() << std::endl;
 }
