@@ -26,11 +26,14 @@ bool ApplicationController::setUp(std::string inputDirectoryPath) {
 void ApplicationController::run() {
     std::cout << "Working with "<< this->songs.size() << " songs" << std::endl;
     for (const auto& song : songs) {
-        std::cout << "Song: " << std::endl;
-        std::cout << song.title << std::endl;
-        std::cout << song.artist << std::endl;
-        std::cout << song.album << std::endl;
-        std::cout << song.genre << std::endl;
         std::cout << "======================="<< std::endl;
+        std::cout << "fileName: " << song.fileName << std::endl;
+        std::cout << "title: " << song.title << std::endl;
+        std::cout << "artist: " << song.artist << std::endl;
+        std::cout << "album: "<< song.album << std::endl;
+        std::cout << "genre: " << song.genre << std::endl;
+        std::cout << "year: " << song.year << std::endl;
+        std::cout << "duration: " << song.duration << std::endl;
+        std::cout << "trackNumber: " << song.trackNumber << std::endl;
     }
 }

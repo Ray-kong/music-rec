@@ -8,10 +8,15 @@
 #include <string>
 
 struct Song {
+    std::string fileName;
     std::string title;
     std::string artist;
     std::string album;
     std::string genre;
+    std::string year;
+    double duration;
+    int trackNumber;
+
 };
 
 #endif // SONG_H
