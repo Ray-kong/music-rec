@@ -4,6 +4,7 @@
 //#include "Gist.h"
 //#include "AudioFile.h"
 //#include "fileref.h"
+#include "lib/include/SpotifyClient.h"
 
 int main(int argc, char* argv[]) {
     std::string inputDirectoryPath;
@@ -20,4 +21,16 @@ int main(int argc, char* argv[]) {
         controller.run();
     }
 
+    // Demo call to spotify getRecommendations
+//    if (argc < 2) {
+//        return 1;
+//    }
+//    std::ifstream secretsFile{argv[1]};
+//    std::string clientID, clientSecret;
+//    secretsFile >> clientID >> clientSecret;
+//    SpotifyClient thing{clientID, clientSecret};
+//    auto res = thing.getRecommendations({"taylor swift"}, {"bad blood"});
+//    for (const auto& part : res) {
+//        std::cout << part->GetName() << std::endl;
+//    }
 }

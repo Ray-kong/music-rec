@@ -31,6 +31,7 @@ bool MusicLibraryProcessor::isMusicFile(const std::string& extension) {
 
 Song MusicLibraryProcessor::extractMetadata(const std::string& filePath) {
     std::ifstream file(filePath, std::ios::binary);
+    std::filesystem::file_size(filePath);
 
     if (!file) {
         throw std::runtime_error("Failed to open file: " + filePath);
